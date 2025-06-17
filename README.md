@@ -1,7 +1,7 @@
 
 # 🧋 MilkTeaStore
 
-**MilkTeaStore** là một ứng dụng Android được phát triển bằng Java/Kotlin nhằm hỗ trợ khách hàng xem và mua các sản phẩm trà sữa. Ứng dụng sử dụng **SQLite** làm cơ sở dữ liệu cục bộ và được thiết kế theo kiến trúc **MVP/MVVM** để đảm bảo dễ bảo trì và mở rộng.
+**MilkTeaStore** là một ứng dụng Android được phát triển bằng Java/Kotlin nhằm hỗ trợ khách hàng xem và mua các sản phẩm trà sữa. Ứng dụng sử dụng **SQLite** làm cơ sở dữ liệu cục bộ và được thiết kế theo kiến trúc **MVC** để đảm bảo dễ bảo trì và mở rộng.
 
 ---
 
@@ -15,7 +15,7 @@ Phát triển một ứng dụng bán hàng (Product Sale App) cho phép ngườ
 - Xem bản đồ cửa hàng
 - Trò chuyện với cửa hàng (dự phòng phát triển thêm)
 - Nhận thông báo nếu giỏ hàng còn sản phẩm
-- Dễ dàng bảo trì với kiến trúc phần mềm rõ ràng (MVP)
+- Dễ dàng bảo trì với kiến trúc phần mềm rõ ràng (MVC)
 
 ---
 
@@ -23,7 +23,7 @@ Phát triển một ứng dụng bán hàng (Product Sale App) cho phép ngườ
 - **Ngôn ngữ:** Java hoặc Kotlin
 - **Database:** SQLite
 - **IDE:** Android Studio
-- **Architecture:** MVP
+- **Architecture:** MVC
 
 ---
 
@@ -40,7 +40,7 @@ Phát triển một ứng dụng bán hàng (Product Sale App) cho phép ngườ
 | 🔔 Thông báo giỏ hàng (10%) | Hiện biểu tượng thông báo khi mở app nếu giỏ hàng có sản phẩm |
 | 🗺️ Bản đồ cửa hàng (10%) | Hiển thị vị trí cửa hàng trên bản đồ |
 | 💬 Chat với cửa hàng (10%) | Giao diện để khách hàng nhắn tin với cửa hàng |
-| 🧠 Kiến trúc phần mềm (10%) | Áp dụng MVP để phát triển ứng dụng |
+| 🧠 Kiến trúc phần mềm (10%) | Áp dụng MVC để phát triển ứng dụng |
 
 ---
 
