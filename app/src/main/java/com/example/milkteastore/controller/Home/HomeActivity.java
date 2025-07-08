@@ -4,17 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+
 import com.example.milkteastore.R;
-import com.example.milkteastore.dao.ProductRepository;
+import com.example.milkteastore.dao.ProductDAO;
 import com.example.milkteastore.databinding.ActivityMainBinding;
-import com.example.milkteastore.model.MenuItem;
+import com.example.milkteastore.model.Product;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private ProductRepository productRepository;
+    private ProductDAO productRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +23,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Khởi tạo repository để lấy dữ liệu từ DB
-        productRepository = new ProductRepository(this);
+        productRepository = new ProductDAO(this);
 
         // Lấy danh sách sản phẩm từ cơ sở dữ liệu
-        List<MenuItem> products = productRepository.getAllProducts();
+        List<Product> products = productRepository.getAllProducts();
 
         // Đặt listener cho card Wintermelon (sản phẩm đầu tiên)
         if (!products.isEmpty()) {
-            MenuItem wintermelon = products.get(0); // Lấy sản phẩm đầu tiên làm ví dụ
+            Product wintermelon = products.get(0); // Lấy sản phẩm đầu tiên làm ví dụ
             binding.cardWintermelon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Đặt listener cho card Java Chip (sản phẩm thứ hai)
         if (products.size() > 1) {
-            MenuItem javaChip = products.get(1); // Lấy sản phẩm thứ hai làm ví dụ
+            Product javaChip = products.get(1); // Lấy sản phẩm thứ hai làm ví dụ
             binding.cardJavaChip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

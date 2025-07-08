@@ -25,8 +25,8 @@
         <activity android:name=".controller.MainActivity" />
         <activity android:name=".controller.login_register.LoginActivity" />
         <activity android:name=".controller.login_register.RegisterActivity" />
-        <activity android:name=".controller.HomeActivity" />
-        <activity android:name=".controller.DetailsActivity" />
+        <activity android:name=".controller.Home.HomeActivity" />
+        <activity android:name=".controller.Home.DetailsActivity" />
     </application>
 
 </manifest>
