@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primaryColor">#FF6200EE</color> <!-- tím đậm -->
+    <color name="gray">#A0A0A0</color> <!-- xám nhẹ -->
+
 </resources>

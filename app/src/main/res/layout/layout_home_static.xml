@@ -52,7 +52,7 @@
                     android:layout_marginEnd="12dp">
 
                     <ImageView
-                        android:src="@drawable/ic_milk_tea"
+                        android:src="@drawable/logo"
                         android:layout_width="48dp"
                         android:layout_height="48dp" />
 
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:background="@drawable/bg_card_gradient"
+                android:background="#fff"
                 android:padding="12dp"
                 android:layout_marginEnd="8dp">
 
@@ -97,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img_wintermelon" />
+                    android:src="#fff" />
 
                 <TextView
                     android:text="Wintermelon"
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:background="@drawable/bg_card_gradient"
+                android:background="#fff"
                 android:padding="12dp"
                 android:layout_marginStart="8dp">
 
@@ -124,7 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img_java_chip" />
+                    android:src="@drawable/milktea_1" />
 
                 <TextView
                     android:text="Java Chip Frappe"
