@@ -1,9 +1,12 @@
-package com.example.milkteastore.model;
+package com.example.milkteastore.dao;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.milkteastore.model.MenuItem;
+import com.example.milkteastore.model.MilkTeaDatabaseHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MilkTeaStore</string>
+    <string name="item_image_description">Hình ảnh sản phẩm</string>
 </resources>
