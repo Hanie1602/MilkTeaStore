@@ -3,24 +3,32 @@ package com.example.milkteastore.controller.Home;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.milkteastore.Adapter.ProductAdapter;
-import com.example.milkteastore.Adapter.RecommendationAdapter; // Thêm adapter mới
+import com.example.milkteastore.Adapter.RecommendationAdapter;
 import com.example.milkteastore.R;
 import com.example.milkteastore.controller.MainActivity;
+import com.example.milkteastore.controller.Cart.CartActivity;
+import com.example.milkteastore.controller.Profile.ProfileActivity;
 import com.example.milkteastore.dao.CategoryDAO;
 import com.example.milkteastore.dao.ProductDAO;
 import com.example.milkteastore.databinding.ActivityMainBinding;
-import com.example.milkteastore.model.Category;
 import com.example.milkteastore.model.Product;
 
 import java.util.ArrayList;
@@ -40,33 +48,58 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         if (binding == null) return;
         setContentView(binding.getRoot());
+
+        View rootView = findViewById(R.id.rootLayout);
+        ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
+            return insets;
+        });
 
         productRepository = new ProductDAO(this);
         categoryDAO = new CategoryDAO(this);
 
         // Lấy toàn bộ sản phẩm
         allProducts = productRepository.getAllProducts();
+        if (allProducts == null) allProducts = new ArrayList<>();
         filteredProducts = new ArrayList<>(allProducts);
         recommendedProducts = new ArrayList<>();
 
         // Cài đặt RecyclerView cho Most Popular
         RecyclerView rvMostPopular = binding.rvMostPopular;
         rvMostPopular.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        ProductAdapter mostPopularAdapter = new ProductAdapter(filteredProducts);
+        ProductAdapter mostPopularAdapter = new ProductAdapter(this, filteredProducts);
         rvMostPopular.setAdapter(mostPopularAdapter);
 
         // Cài đặt RecyclerView cho Recommendation
         RecyclerView rvRecommendation = binding.rvRecommendation;
         rvRecommendation.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        RecommendationAdapter recommendationAdapter = new RecommendationAdapter(getTopProducts(5)); // Lấy top 5 sản phẩm
+        RecommendationAdapter recommendationAdapter = new RecommendationAdapter(getTopProducts(5));
         rvRecommendation.setAdapter(recommendationAdapter);
 
-        // Lấy danh mục và gắn listener
-        List<Category> categories = categoryDAO.getAllCategories();
-        setupCategoryListeners(categories);
+        // Thiết lập tính năng tìm kiếm
+        EditText etSearch = binding.etSearch;
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Không cần xử lý
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Lọc danh sách khi nhập
+                filterProducts(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Không cần xử lý
+            }
+        });
 
         // Đặt listener cho icon cửa hàng
         if (binding.ivShopIcon != null) {
@@ -83,6 +116,27 @@ public class HomeActivity extends AppCompatActivity {
             });
         }
 
+        // Cài đặt BottomNavigationView
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.menu_home) {
+                return true;
+            }
+
+            if (itemId == R.id.menu_cart) {
+                startActivity(new Intent(HomeActivity.this, CartActivity.class));
+                return true;
+            }
+
+            if (itemId == R.id.menu_profile) {
+                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                return true;
+            }
+
+            return false;
+        });
+
         //Chat Bot
         ImageView ivChat = findViewById(R.id.ivChat);
         ivChat.setOnClickListener(v -> {
@@ -92,61 +146,23 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void setupCategoryListeners(List<Category> categories) {
-        LinearLayout llCategories = binding.llCategories;
-        llCategories.removeAllViews();
-
-        for (Category category : categories) {
-            LinearLayout categoryItem = createCategoryItem(category);
-            int finalI = category.getId();
-            categoryItem.setOnClickListener(v -> filterProductsByCategory(finalI));
-            llCategories.addView(categoryItem);
-        }
-    }
-
-    private LinearLayout createCategoryItem(Category category) {
-        LinearLayout item = new LinearLayout(this);
-        item.setLayoutParams(new LinearLayout.LayoutParams(72, 72));
-        item.setOrientation(LinearLayout.VERTICAL);
-        item.setGravity(Gravity.CENTER);
-
-        androidx.cardview.widget.CardView cardView = new androidx.cardview.widget.CardView(this);
-        cardView.setLayoutParams(new LinearLayout.LayoutParams(48, 48));
-        cardView.setRadius(24);
-        cardView.setCardElevation(4);
-        cardView.setCardBackgroundColor(getResources().getColor(android.R.color.white));
-
-        android.widget.ImageView imageView = new android.widget.ImageView(this);
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(32, 32));
-        imageView.setScaleType(android.widget.ImageView.ScaleType.CENTER);
-        if ("Milk Tea".equals(category.getCategoryName())) imageView.setImageResource(R.drawable.ic_milk_tea);
-        else if ("Fruit Tea".equals(category.getCategoryName())) imageView.setImageResource(R.drawable.ic_fruit_tea);
-        else if ("Coffee".equals(category.getCategoryName())) imageView.setImageResource(R.drawable.ic_coffee);
-        imageView.setContentDescription(category.getCategoryName() + " Icon");
-        cardView.addView(imageView);
-
-        android.widget.TextView textView = new android.widget.TextView(this);
-        textView.setLayoutParams(new LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT));
-        textView.setText(category.getCategoryName());
-        textView.setTextSize(12);
-        textView.setTextColor(getResources().getColor(android.R.color.black));
-        textView.setPadding(0, 4, 0, 0);
-
-        item.addView(cardView);
-        item.addView(textView);
-        return item;
-    }
-
-    private void filterProductsByCategory(int categoryId) {
+    private void filterProducts(String query) {
         filteredProducts.clear();
-        for (Product product : allProducts) {
-            if (product.getCategoryId() == categoryId) {
-                filteredProducts.add(product);
+        if (query.isEmpty()) {
+            filteredProducts.addAll(allProducts);
+        } else {
+            String searchQuery = query.toLowerCase();
+            for (Product product : allProducts) {
+                if (product != null && product.getName() != null && product.getName().toLowerCase().contains(searchQuery)) {
+                    filteredProducts.add(product);
+                }
             }
         }
         RecyclerView rvMostPopular = binding.rvMostPopular;
         ProductAdapter adapter = (ProductAdapter) rvMostPopular.getAdapter();
-        if (adapter != null) adapter.updateData(filteredProducts);
+        if (adapter != null) {
+            adapter.updateData(filteredProducts);
+        }
     }
 
     private List<Product> getTopProducts(int count) {
@@ -154,7 +170,7 @@ public class HomeActivity extends AppCompatActivity {
         Collections.sort(topProducts, new Comparator<Product>() {
             @Override
             public int compare(Product p1, Product p2) {
-                return Double.compare(p2.getPrice(), p1.getPrice()); // Sắp xếp giảm dần theo giá
+                return Double.compare(p2.getPrice(), p1.getPrice());
             }
         });
         return topProducts.size() > count ? topProducts.subList(0, count) : topProducts;
