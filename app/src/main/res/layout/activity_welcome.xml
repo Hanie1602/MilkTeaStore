@@ -22,7 +22,7 @@
         android:id="@+id/tvWelcomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to the app"
+        android:text="Welcome to the Milk tea"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="#000000"
@@ -49,8 +49,8 @@
         android:backgroundTint="#3366FF"
         android:textColor="#FFFFFF"
         android:textAllCaps="false"
-        android:background="@drawable/bg_button_rounded"
         android:layout_marginBottom="16dp"/>
+
 
     <!-- Create Account Link -->
     <TextView
