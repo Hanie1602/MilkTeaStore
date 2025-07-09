@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.milkteastore.R;
-import com.example.milkteastore.controller.MainActivity;
+import com.example.milkteastore.controller.Home.HomeActivity;
 import com.example.milkteastore.dao.UserDAO;
 import com.example.milkteastore.model.User;
 
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Login successful! Welcome " + loggedInUser.firstName, Toast.LENGTH_SHORT).show();
 
             // 👉 Chuyển đến MainActivity
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             intent.putExtra("userId", loggedInUser.id); // tuỳ theo dữ liệu bạn cần
             startActivity(intent);
             finish(); // kết thúc login activity

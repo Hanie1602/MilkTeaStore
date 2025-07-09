@@ -25,6 +25,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Shop Icon (đỉnh góc phải) -->
+    <ImageView
+        android:id="@+id/ivShopIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_shop"
+        android:contentDescription="Icon cửa hàng"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
+        android:focusable="true" />
+
     <!-- Search Bar container -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardSearch"
@@ -35,7 +49,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/ivShopIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@android:color/white">
@@ -53,7 +67,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@android:drawable/ic_menu_search"
-                android:tint="#AEAEB2" />
+                app:tint="#AEAEB2" />
 
             <EditText
                 android:id="@+id/etSearch"
@@ -83,149 +97,116 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!--        <LinearLayout-->
-        <!--            android:id="@+id/llCategories"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:gravity="center_vertical"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:paddingStart="12dp"-->
-        <!--            android:paddingEnd="12dp"-->
-        <!--            android:clipToPadding="false">-->
+        <LinearLayout
+            android:id="@+id/llCategories"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:clipToPadding="false">
 
-        <!--            <!– Category Item 1 –>-->
-        <!--            <LinearLayout-->
-        <!--                android:id="@+id/categoryMilkTea"-->
-        <!--                android:layout_width="72dp"-->
-        <!--                android:layout_height="72dp"-->
-        <!--                android:orientation="vertical"-->
-        <!--                android:gravity="center"-->
-        <!--                android:layout_marginEnd="16dp">-->
+            <!-- Category Item 1 -->
+            <LinearLayout
+                android:id="@+id/categoryMilkTea"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="16dp">
 
-        <!--<!–                <androidx.cardview.widget.CardView–>-->
-        <!--<!–                    android:layout_width="48dp"–>-->
-        <!--<!–                    android:layout_height="48dp"–>-->
-        <!--<!–                    app:cardCornerRadius="24dp"–>-->
-        <!--<!–                    app:cardElevation="4dp"–>-->
-        <!--<!–                    android:background="@android:color/white">–>-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
+                    android:background="@android:color/white">
 
-        <!--<!–                    <ImageView–>-->
-        <!--<!–                        android:layout_width="32dp"–>-->
-        <!--<!–                        android:layout_height="32dp"–>-->
-        <!--<!–                        android:src="@drawable/ic_milk_tea"–>-->
-        <!--<!–                        android:contentDescription="Milk Tea Icon"–>-->
-        <!--<!–                        android:layout_gravity="center" />–>-->
-        <!--<!–                </androidx.cardview.widget.CardView>–>-->
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_milk_tea"
+                        android:contentDescription="Milk Tea Icon"
+                        android:layout_gravity="center" />
+                </androidx.cardview.widget.CardView>
 
-        <!--                <TextView-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:text="Milk Tea"-->
-        <!--                    android:textSize="12sp"-->
-        <!--                    android:textColor="#1C1B1F"-->
-        <!--                    android:layout_marginTop="4dp" />-->
-        <!--            </LinearLayout>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Milk Tea"
+                    android:textSize="12sp"
+                    android:textColor="#1C1B1F"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
 
-        <!--            <!– Category Item 2 –>-->
-        <!--            <LinearLayout-->
-        <!--                android:id="@+id/categoryFruitTea"-->
-        <!--                android:layout_width="72dp"-->
-        <!--                android:layout_height="72dp"-->
-        <!--                android:orientation="vertical"-->
-        <!--                android:gravity="center"-->
-        <!--                android:layout_marginEnd="16dp">-->
+            <!-- Category Item 2 -->
+            <LinearLayout
+                android:id="@+id/categoryFruitTea"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="16dp">
 
-        <!--                <androidx.cardview.widget.CardView-->
-        <!--                    android:layout_width="48dp"-->
-        <!--                    android:layout_height="48dp"-->
-        <!--                    app:cardCornerRadius="24dp"-->
-        <!--                    app:cardElevation="4dp"-->
-        <!--                    android:background="@android:color/white">-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
+                    android:background="@android:color/white">
 
-        <!--                    <ImageView-->
-        <!--                        android:layout_width="32dp"-->
-        <!--                        android:layout_height="32dp"-->
-        <!--                        android:src="@drawable/ic_fruit_tea"-->
-        <!--                        android:contentDescription="Fruit Tea Icon"-->
-        <!--                        android:layout_gravity="center" />-->
-        <!--                </androidx.cardview.widget.CardView>-->
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_fruit_tea"
+                        android:contentDescription="Fruit Tea Icon"
+                        android:layout_gravity="center" />
+                </androidx.cardview.widget.CardView>
 
-        <!--                <TextView-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:text="Fruit Tea"-->
-        <!--                    android:textSize="12sp"-->
-        <!--                    android:textColor="#1C1B1F"-->
-        <!--                    android:layout_marginTop="4dp" />-->
-        <!--            </LinearLayout>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fruit Tea"
+                    android:textSize="12sp"
+                    android:textColor="#1C1B1F"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
 
-        <!--            <!– Category Item 3 –>-->
-        <!--            <LinearLayout-->
-        <!--                android:id="@+id/categoryCreamP"-->
-        <!--                android:layout_width="72dp"-->
-        <!--                android:layout_height="72dp"-->
-        <!--                android:orientation="vertical"-->
-        <!--                android:gravity="center"-->
-        <!--                android:layout_marginEnd="16dp">-->
+            <!-- Category Item 3 -->
+            <LinearLayout
+                android:id="@+id/categoryCoffee"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="16dp">
 
-        <!--                <androidx.cardview.widget.CardView-->
-        <!--                    android:layout_width="48dp"-->
-        <!--                    android:layout_height="48dp"-->
-        <!--                    app:cardCornerRadius="24dp"-->
-        <!--                    app:cardElevation="4dp"-->
-        <!--                    android:background="@android:color/white">-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
+                    android:background="@android:color/white">
 
-        <!--                    <ImageView-->
-        <!--                        android:layout_width="32dp"-->
-        <!--                        android:layout_height="32dp"-->
-        <!--                        android:src="@drawable/ic_cream_p"-->
-        <!--                        android:contentDescription="Cream Puff Icon"-->
-        <!--                        android:layout_gravity="center" />-->
-        <!--                </androidx.cardview.widget.CardView>-->
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_coffee"
+                        android:contentDescription="Cream Puff Icon"
+                        android:layout_gravity="center" />
+                </androidx.cardview.widget.CardView>
 
-        <!--                <TextView-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:text="Cream P..."-->
-        <!--                    android:textSize="12sp"-->
-        <!--                    android:textColor="#1C1B1F"-->
-        <!--                    android:layout_marginTop="4dp" />-->
-        <!--            </LinearLayout>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coffee"
+                    android:textSize="12sp"
+                    android:textColor="#1C1B1F"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
 
-        <!--            <!– Category Item 4 –>-->
-        <!--            <LinearLayout-->
-        <!--                android:id="@+id/categoryFrappe"-->
-        <!--                android:layout_width="72dp"-->
-        <!--                android:layout_height="72dp"-->
-        <!--                android:orientation="vertical"-->
-        <!--                android:gravity="center"-->
-        <!--                android:layout_marginEnd="16dp">-->
-
-        <!--                <androidx.cardview.widget.CardView-->
-        <!--                    android:layout_width="48dp"-->
-        <!--                    android:layout_height="48dp"-->
-        <!--                    app:cardCornerRadius="24dp"-->
-        <!--                    app:cardElevation="4dp"-->
-        <!--                    android:background="@android:color/white">-->
-
-        <!--                    <ImageView-->
-        <!--                        android:layout_width="32dp"-->
-        <!--                        android:layout_height="32dp"-->
-        <!--                        android:src="@drawable/ic_frappe"-->
-        <!--                        android:contentDescription="Frappe Icon"-->
-        <!--                        android:layout_gravity="center" />-->
-        <!--                </androidx.cardview.widget.CardView>-->
-
-        <!--                <TextView-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:text="Frappe"-->
-        <!--                    android:textSize="12sp"-->
-        <!--                    android:textColor="#1C1B1F"-->
-        <!--                    android:layout_marginTop="4dp" />-->
-        <!--            </LinearLayout>-->
-
-        <!--        </LinearLayout>-->
+        </LinearLayout>
     </HorizontalScrollView>
 
     <!-- Most Popular label -->
@@ -244,136 +225,19 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Horizontal list of Most Popular cards -->
-    <HorizontalScrollView
-        android:id="@+id/hsMostPopular"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMostPopular"
         android:layout_width="0dp"
         android:layout_height="220dp"
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:fillViewport="false"
-        android:scrollbars="none"
         app:layout_constraintTop_toBottomOf="@id/tvMostPopular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:id="@+id/llMostPopular"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:clipToPadding="false"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp">
-
-            <!-- Card 1 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardWintermelon"
-                android:layout_width="140dp"
-                android:layout_height="203dp"
-                android:layout_marginEnd="16dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="4dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="204dp">
-
-                    <ImageView
-                        android:id="@+id/imgWintermelon"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
-                        android:contentDescription="Cold Wintermelon Bubble Tea in clear cup with ice and black pearls"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/milktea_1" />
-
-                    <TextView
-                        android:id="@+id/tvWintermelonName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/imgWintermelon"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="26dp"
-                        android:layout_marginTop="9dp"
-                        android:text="Wintermelon"
-                        android:textColor="#1C1B1F"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvWintermelonPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/imgWintermelon"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="34dp"
-                        android:layout_marginEnd="47dp"
-                        android:text="₱ 80.00"
-                        android:textColor="#1C1B1F"
-                        android:textSize="14sp" />
-
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Card 2 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardJavaChip"
-                android:layout_width="140dp"
-                android:layout_height="203dp"
-                android:layout_marginEnd="16dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="4dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="198dp">
-
-                    <ImageView
-                        android:id="@+id/imgJavaChip"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
-                        android:contentDescription="Cold Java Chip Frappe with whipped cream and chocolate chips on top"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/milktea_1" />
-
-                    <TextView
-                        android:id="@+id/tvJavaChipName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/imgJavaChip"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Java Chip Frappe"
-                        android:textColor="#1C1B1F"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvJavaChipPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/imgJavaChip"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="34dp"
-                        android:layout_marginEnd="47dp"
-                        android:text="₱ 90.00"
-                        android:textColor="#1C1B1F"
-                        android:textSize="14sp" />
-
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </HorizontalScrollView>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clipToPadding="false"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
 
     <!-- Recommendation Label -->
     <TextView
@@ -387,66 +251,23 @@
         android:fontFamily="sans-serif-medium"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/hsMostPopular"
+        app:layout_constraintTop_toBottomOf="@id/rvMostPopular"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Horizontal list Recommendations (simplified as horizontal scroll) -->
-    <HorizontalScrollView
-        android:id="@+id/hsRecommendation"
+    <!-- Horizontal list Recommendations -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecommendation"
         android:layout_width="0dp"
         android:layout_height="140dp"
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:scrollbars="none"
         app:layout_constraintTop_toBottomOf="@id/tvRecommendation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:clipToPadding="false">
-
-        <LinearLayout
-            android:id="@+id/llRecommendation"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:clipToPadding="false"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp">
-
-            <!-- Recommendation item -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="16dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/milktea_1"
-                    android:contentDescription="Close up cold glass with black tapioca pearls on top of milk tea"/>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Another recommendation item -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="16dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/milktea_1"
-                    android:contentDescription="Cream puff pastry dessert on white plate"/>
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </HorizontalScrollView>
+        android:clipToPadding="false"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
 
     <!-- Bottom navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

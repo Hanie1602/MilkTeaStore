@@ -3,7 +3,9 @@ package com.example.milkteastore.controller.Home;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.milkteastore.R;
 import com.example.milkteastore.databinding.ActivityDetailsBinding;
 
@@ -34,10 +36,10 @@ public class DetailsActivity extends AppCompatActivity {
 
         // Cập nhật giao diện
         binding.tvItemName.setText(itemName);
-        binding.tvItemPrice.setText(itemPrice);
+        binding.tvItemPrice.setText("₱ " + itemPrice);
         binding.tvItemDescription.setText(itemDescription);
         binding.imgItem.setImageResource(itemImage);
-        binding.tvItemSize.setText("Size: " + itemSize); // Thêm hiển thị size
-        binding.tvItemQuantity.setText("Available: " + itemQuantity); // Thêm hiển thị số lượng
+        binding.tvItemSize.setText("Size: " + itemSize);
+        binding.tvItemQuantity.setText("Available: " + itemQuantity);
     }
 }

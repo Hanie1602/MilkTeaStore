@@ -1,6 +1,6 @@
 package com.example.milkteastore.model;
 
-public class MenuItem {
+public class Product {
     private int id;
     private int categoryId;
     private String name;
@@ -13,7 +13,7 @@ public class MenuItem {
     private String updatedTime;
     private String deletedTime;
 
-    public MenuItem(int id, int categoryId, String name, String description, double price, String size, int quantity, String image, String createdTime, String updatedTime, String deletedTime) {
+    public Product(int id, int categoryId, String name, String description, double price, String size, int quantity, String image, String createdTime, String updatedTime, String deletedTime) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
