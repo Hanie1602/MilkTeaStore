@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.milkteastore.Adapter.CartAdapter;
 import com.example.milkteastore.R;
 import com.example.milkteastore.controller.LoginRegister.LoginActivity;
 import com.example.milkteastore.controller.LoginRegister.WelcomeActivity;
+import com.example.milkteastore.model.CartItem;
+import com.example.milkteastore.utils.CartManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,47 +21,53 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CartActivity extends AppCompatActivity {
 
     Button btnCheckout;
+    RecyclerView rvCart;
+    TextView tvSubtotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        // 1. Tìm itemContainer
-        LinearLayout itemContainer = findViewById(R.id.itemContainer);
-
-        // 2. Inflate item layout và add vào container (giả sử có 2 sản phẩm mẫu)
-        LayoutInflater inflater = LayoutInflater.from(this);
-
-        for (int i = 0; i < 2; i++) {
-            View itemView = inflater.inflate(R.layout.cart_item, itemContainer, false);
-
-            // Gán dữ liệu mẫu
-            ImageView imgProduct = itemView.findViewById(R.id.imgProduct);
-            TextView tvName = itemView.findViewById(R.id.tvName);
-            TextView tvDesc = itemView.findViewById(R.id.tvDesc);
-            TextView tvPrice = itemView.findViewById(R.id.tvPrice);
-            TextView tvQuantity = itemView.findViewById(R.id.tvQuantity);
-
-            // Có thể load ảnh từ res hoặc từ URL (nếu sau này có Glide hoặc Picasso)
-            imgProduct.setImageResource(R.drawable.matcha);
-            tvName.setText("Matcha Milk Tea");
-            tvDesc.setText("Size: M");
-            tvPrice.setText("$3.50");
-            tvQuantity.setText("1");
-
-            // Thêm view vào container
-            itemContainer.addView(itemView);
-        }
-
+        rvCart = findViewById(R.id.rvCart);
+        tvSubtotal = findViewById(R.id.tvSubtotal);
         btnCheckout = findViewById(R.id.btnCheckout);
 
+        int currentUserId = getSharedPreferences("USER_SESSION", MODE_PRIVATE).getInt("USER_ID", -1);
+        List<CartItem> cartItems = CartManager.getInstance()
+                .getCartItems()
+                .stream()
+                .filter(item -> item.getUserId() == currentUserId)
+                .collect(Collectors.toList());
+
+        CartAdapter adapter = new CartAdapter(this, cartItems, this::updateSubtotal);
+        rvCart.setLayoutManager(new LinearLayoutManager(this));
+        rvCart.setAdapter(adapter);
+
+        updateSubtotal();
+
+        // ✅ Di chuyển intent vào đây — chỉ chạy khi nhấn nút "Checkout"
         btnCheckout.setOnClickListener(v -> {
             Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
+            intent.putExtra("TOTAL_AMOUNT", CartManager.getInstance().calculateTotal(currentUserId));
+            intent.putExtra("CART_LIST", new ArrayList<>(cartItems));
             startActivity(intent);
         });
     }
+
+    private void updateSubtotal() {
+        double subtotal = 0.0;
+        for (CartItem item : CartManager.getInstance().getCartItems()) {
+            subtotal += Double.parseDouble(item.getPrice()) * item.getQuantity();
+        }
+        tvSubtotal.setText(String.format("$%.2f", subtotal));
+    }
 }
+

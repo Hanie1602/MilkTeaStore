@@ -10,9 +10,18 @@ public class User {
     public String passwordHash;
     public String role;
 
+    public String phoneNumber;
+
+    public String address;
+
+
     // Constructor
-    public User(int id, String firstName, String lastName, String username, String email, String passwordHash, String role) {
-        this.id = id;
+
+
+    public User() {
+    }
+
+    public User(String firstName, String lastName, String username, String email, String passwordHash, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -21,10 +30,6 @@ public class User {
         this.role = role;
     }
 
-    public User() {}
-
-
-//        Getter & setter
     public int getId() {
         return id;
     }
@@ -79,5 +84,21 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

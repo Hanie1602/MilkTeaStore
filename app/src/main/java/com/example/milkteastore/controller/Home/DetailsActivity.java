@@ -1,13 +1,18 @@
 package com.example.milkteastore.controller.Home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.milkteastore.R;
+import com.example.milkteastore.controller.Cart.CartActivity;
 import com.example.milkteastore.databinding.ActivityDetailsBinding;
+import com.example.milkteastore.model.CartItem;
+import com.example.milkteastore.utils.CartManager;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -41,5 +46,29 @@ public class DetailsActivity extends AppCompatActivity {
         binding.imgItem.setImageResource(itemImage);
         binding.tvItemSize.setText("Size: " + itemSize);
         binding.tvItemQuantity.setText("Available: " + itemQuantity);
+
+        // Fix lỗi bằng cách tạo biến final mới
+        final String finalName = itemName;
+        final String finalPrice = itemPrice;
+        final int finalImage = itemImage;
+        final String finalSize = itemSize;
+
+// Button click
+        binding.btnAddToCart.setOnClickListener(v -> {
+            int userId = getSharedPreferences("USER_SESSION", MODE_PRIVATE).getInt("USER_ID", -1);
+
+            if (userId == -1) {
+                Toast.makeText(this, "You must be logged in to add items to cart", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            CartItem item = new CartItem(userId, itemId, finalName, finalPrice, finalImage, finalSize, 1);
+
+
+            CartManager.getInstance().addToCart(item);
+            Toast.makeText(this, "Added to cart", Toast.LENGTH_SHORT).show();
+        });
+
+
     }
 }

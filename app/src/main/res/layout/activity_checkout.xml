@@ -50,61 +50,42 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kathryn Santos"
+                        android:text="Full Name"
                         android:textColor="#000000"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="312 Sunshine square Bldg Shaw Blvd\npleasant Hill, 1552"
+                        android:text="Address..."
                         android:textColor="#666666"
                         android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone..."
+                        android:textColor="#666666"
+                        android:textSize="14sp" />
+
                 </LinearLayout>
             </LinearLayout>
 
             <!-- Product Summary -->
             <LinearLayout
+                android:id="@+id/productSummaryLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="1 x Wintermelon"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:text="Categories: Milktea\nSugar Level: 50%\nSize: Regular\nToppings: Pearls"
-                    android:textColor="#666666"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="1 x Wintermelon"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Categories: Milktea\nSugar Level: 50%\nSize: Regular\nToppings: Pearls"
-                    android:textColor="#666666"
-                    android:textSize="14sp" />
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp">
+                <!-- Add views programmatically -->
             </LinearLayout>
+
 
 
             <!-- Payment Option -->
@@ -272,12 +253,14 @@
         android:weightSum="1">
 
         <TextView
+            android:id="@+id/tvTotalPayment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="Total Payment\n₱110"
+            android:text="Total Payment\n₱0"
             android:textColor="#000000"
             android:textSize="16sp" />
+
 
         <Button
             android:id="@+id/btnPlaceOrder"

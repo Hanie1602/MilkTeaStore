@@ -43,6 +43,13 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+//        Home  screen
+        TextView tvHomeScreen = findViewById(R.id.tvHomeScreen);
+        tvHomeScreen.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     private void loginUser() {
@@ -61,11 +68,20 @@ public class LoginActivity extends AppCompatActivity {
         if (loggedInUser != null) {
             Toast.makeText(this, "Login successful! Welcome " + loggedInUser.firstName, Toast.LENGTH_SHORT).show();
 
-            // 👉 Chuyển đến MainActivity
+            // 👉 Lưu thông tin người dùng vào SharedPreferences
+            getSharedPreferences("USER_SESSION", MODE_PRIVATE)
+                    .edit()
+                    .putInt("USER_ID", loggedInUser.id)
+                    .putString("USER_NAME", loggedInUser.firstName + " " + loggedInUser.lastName)
+                    .putString("USER_PHONE", loggedInUser.getPhoneNumber())
+                    .putString("USER_ADDRESS", loggedInUser.getAddress())
+                    .apply();
+
+            // 👉 Chuyển đến HomeActivity
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            intent.putExtra("userId", loggedInUser.id); // tuỳ theo dữ liệu bạn cần
+            intent.putExtra("userId", loggedInUser.id);
             startActivity(intent);
-            finish(); // kết thúc login activity
+            finish(); // kết thúc LoginActivity
         } else {
             Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
         }
