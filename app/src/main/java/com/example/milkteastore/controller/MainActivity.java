@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.milkteastore.R;
 import com.example.milkteastore.controller.Cart.CartActivity;
 import com.example.milkteastore.controller.Home.HomeActivity;
+import com.example.milkteastore.controller.Profile.ProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,17 +39,25 @@ public class MainActivity extends AppCompatActivity {
             int itemId = item.getItemId();
 
             if (itemId == R.id.menu_home) {
-                startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                // Đã ở MainActivity (Home), không cần mở lại
                 return true;
             }
 
             if (itemId == R.id.menu_cart) {
-                startActivity(new Intent(MainActivity.this, CartActivity.class));
+                Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                return true;
+            }
+
+            if (itemId == R.id.menu_profile) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 return true;
             }
 
             return false;
         });
-
     }
 }

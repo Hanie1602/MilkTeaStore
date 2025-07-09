@@ -41,17 +41,34 @@
     </ScrollView>
 
     <!-- Subtotal -->
-    <TextView
-        android:id="@+id/tvSubtotal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sub total      $0.00"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
+        android:orientation="horizontal"
         android:layout_marginTop="12dp"
-        android:layout_marginBottom="4dp"
-        android:gravity="end"/>
+        android:layout_marginBottom="4dp">
+
+        <!-- Label -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sub total:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+        <!-- Value -->
+        <TextView
+            android:id="@+id/tvSubtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"
@@ -62,23 +79,16 @@
         android:gravity="end"/>
 
     <!-- Buttons -->
+
     <Button
         android:id="@+id/btnCheckout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Check out"
-        android:layout_marginTop="16dp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#000000"/>
-
-    <Button
-        android:id="@+id/btnPaypal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Check out with PayPal"
+        android:textSize="17dp"
         android:layout_marginTop="8dp"
         android:textColor="#000000"
-        android:background="@android:color/white"
+        android:backgroundTint="#3366FF"
         android:strokeColor="#000000"/>
 
     <TextView
@@ -89,5 +99,8 @@
         android:textColor="#444444"
         android:textSize="14sp"
         android:gravity="center"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp"
+        android:textStyle="bold"/>
+
+
 </LinearLayout>
