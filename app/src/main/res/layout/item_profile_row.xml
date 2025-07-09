@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_input_rounded"
+    android:gravity="center_vertical"
+    android:elevation="2dp">
+
+    <ImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_profile"
+        android:tint="#2196F3"
+        android:layout_marginEnd="12dp" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Hồ sơ"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:tint="#999999" />
+</LinearLayout>

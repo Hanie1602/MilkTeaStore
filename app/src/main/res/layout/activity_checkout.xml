@@ -1,172 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
-        <!-- Header -->
-        <TextView
-            android:id="@+id/tvCheckoutTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Review Your Order"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#4E2E1E"
-            android:layout_marginBottom="24dp"
-            android:layout_gravity="center" />
-
-        <!-- Address -->
         <LinearLayout
-            android:orientation="horizontal"
-            android:padding="12dp"
-            android:background="@drawable/bg_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_location"
-                android:tint="#4E2E1E"
-                android:layout_marginRight="8dp" />
-
-            <LinearLayout
-                android:orientation="vertical"
+            <!-- Header -->
+            <TextView
+                android:id="@+id/tvCheckoutTitle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                android:text="Review Your Order"
+                android:textColor="#4E2E1E"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-                <TextView
+            <!-- Address -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_card"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_location"
+                    android:tint="#4E2E1E" />
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kathryn Santos"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kathryn Santos"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="312 Sunshine square Bldg Shaw Blvd\npleasant Hill, 1552"
+                        android:textColor="#666666"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Product Summary -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="312 Sunshine square Bldg Shaw Blvd\npleasant Hill, 1552"
+                    android:layout_marginBottom="4dp"
+                    android:text="1 x Wintermelon"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="Categories: Milktea\nSugar Level: 50%\nSize: Regular\nToppings: Pearls"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="1 x Wintermelon"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Categories: Milktea\nSugar Level: 50%\nSize: Regular\nToppings: Pearls"
                     android:textColor="#666666"
                     android:textSize="14sp" />
             </LinearLayout>
-        </LinearLayout>
 
-        <!-- Product Summary -->
+
+            <!-- Payment Option -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_card"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_payment"
+                    android:tint="#4E2E1E" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Cash on Delivery"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Payment Details -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_card"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <!-- Icon -->
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="bill icon"
+                    android:src="@drawable/ic_bill"
+                    android:tint="#4E2E1E" />
+
+                <!-- Content -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Title -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Payment Details"
+                        android:textColor="#4E2E1E"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- Items -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Wintermelon Milktea"
+                            android:textColor="#000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₱80.00"
+                            android:textColor="#666666" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Pearls Toppings"
+                            android:textColor="#000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₱10.00"
+                            android:textColor="#666666" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Delivery Fee"
+                            android:textColor="#000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₱20.00"
+                            android:textColor="#666666" />
+                    </LinearLayout>
+
+                    <!-- TOTAL -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TOTAL"
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₱110.00"
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Fixed bottom bar -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:gravity="center_vertical|end"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:weightSum="1">
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="1 x Wintermelon"
-            android:textStyle="bold"
+            android:layout_weight="0.5"
+            android:text="Total Payment\n₱110"
             android:textColor="#000000"
-            android:textSize="16sp"
-            android:layout_marginBottom="4dp" />
+            android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnPlaceOrder"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Categories: Milktea\nSugar Level: 50%\nSize: Regular\nToppings: Pearls"
-            android:textColor="#666666"
-            android:textSize="14sp"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Payment Option -->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:padding="12dp"
-            android:background="@drawable/bg_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_payment"
-                android:tint="#4E2E1E"
-                android:layout_marginRight="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cash on Delivery"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
-
-        <!-- Payment Details -->
-        <LinearLayout
-            android:orientation="vertical"
-            android:padding="12dp"
-            android:background="@drawable/bg_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Payment Details"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:layout_marginBottom="8dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Wintermelon Milktea        ₱80.00" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pearls Toppings            ₱10.00" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Delivery Fee              ₱20.00" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TOTAL                         ₱110.00"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp" />
-        </LinearLayout>
-
-        <!-- Bottom Bar -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical|end"
-            android:weightSum="1">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="Total Payment\n₱110"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/btnPlaceOrder"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="Place Order"
-                android:backgroundTint="#4E2E1E"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
-
+            android:layout_weight="0.5"
+            android:backgroundTint="#3366FF"
+            android:text="Place Order"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
-</ScrollView>
+
+</RelativeLayout>
