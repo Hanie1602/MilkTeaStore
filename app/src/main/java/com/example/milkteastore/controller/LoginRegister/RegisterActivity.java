@@ -1,4 +1,4 @@
-package com.example.milkteastore.controller.login_register;
+package com.example.milkteastore.controller.LoginRegister;
 
 
 import android.content.Intent;
