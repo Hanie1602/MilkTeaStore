@@ -13,7 +13,7 @@ public class MilkTeaDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "MilkTeaStore.db";
 
     //Phiên bản Database
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     //Contractor, truyền context cho SQLiteOpenHelper
     public MilkTeaDatabaseHelper(Context context) {
@@ -59,7 +59,7 @@ public class MilkTeaDatabaseHelper extends SQLiteOpenHelper {
         //Bảng Topping: topping thêm (trân châu, thạch, flan,...)
         db.execSQL("CREATE TABLE Topping (" +
                 "Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "Name TEXT, Price REAL, DeletedTime TEXT)");
+                "Name TEXT, Price REAL, Image TEXT, DeletedTime TEXT)");
 
         //Bảng OrderTopping: topping trong từng ly nước
         db.execSQL("CREATE TABLE OrderTopping (" +
