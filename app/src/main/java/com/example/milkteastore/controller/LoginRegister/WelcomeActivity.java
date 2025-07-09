@@ -19,6 +19,9 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(com.example.milkteastore.R.layout.activity_welcome);
 
+        // Gọi hàm chèn dữ liệu nếu bảng rỗng
+        com.example.milkteastore.model.DatabaseSeeder.seedIfNeeded(this);
+
         btnLogin = findViewById(R.id.btnWelcomeLogin);
         tvCreateAccount = findViewById(R.id.tvCreateAccount);
 

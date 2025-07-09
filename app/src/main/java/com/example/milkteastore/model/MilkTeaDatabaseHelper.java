@@ -13,7 +13,7 @@ public class MilkTeaDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "MilkTeaStore.db";
 
     //Phiên bản Database
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     //Contractor, truyền context cho SQLiteOpenHelper
     public MilkTeaDatabaseHelper(Context context) {
