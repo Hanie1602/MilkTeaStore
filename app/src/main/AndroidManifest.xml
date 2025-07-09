@@ -36,6 +36,9 @@
 <!--   Cart product-->
         <activity android:name=".controller.Cart.CartActivity" />
         <activity android:name=".controller.Cart.CheckoutActivity" />
+
+        <!--   Chat -->
+        <activity android:name=".controller.Chat.ChatActivity" />
     </application>
 
 </manifest>

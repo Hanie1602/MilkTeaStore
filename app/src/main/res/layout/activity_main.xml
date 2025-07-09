@@ -269,6 +269,21 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp" />
 
+    <!-- Chat -->
+    <ImageView
+        android:id="@+id/ivChat"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_chat"
+        android:background="@drawable/bg_round_white"
+        android:elevation="6dp"
+        android:contentDescription="Chat Icon"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!-- Bottom navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"

@@ -5,7 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.milkteastore.Adapter.ProductAdapter;
 import com.example.milkteastore.Adapter.RecommendationAdapter; // Thêm adapter mới
 import com.example.milkteastore.R;
+import com.example.milkteastore.controller.MainActivity;
 import com.example.milkteastore.dao.CategoryDAO;
 import com.example.milkteastore.dao.ProductDAO;
 import com.example.milkteastore.databinding.ActivityMainBinding;
@@ -79,6 +82,14 @@ public class HomeActivity extends AppCompatActivity {
                 }
             });
         }
+
+        //Chat Bot
+        ImageView ivChat = findViewById(R.id.ivChat);
+        ivChat.setOnClickListener(v -> {
+            Toast.makeText(this, "Đã bấm chat", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, com.example.milkteastore.controller.Chat.ChatActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void setupCategoryListeners(List<Category> categories) {
