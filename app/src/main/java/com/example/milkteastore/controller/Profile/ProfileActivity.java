@@ -1,6 +1,7 @@
 package com.example.milkteastore.controller.Profile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,7 +18,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ImageView imgAvatar;
     private TextView tvName, tvEmail;
-    private LinearLayout rowProfile, rowCommunity, rowSchedule, rowLogout;
+    private LinearLayout rowProfile, rowOrderProduct, rowLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +31,28 @@ public class ProfileActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.tvEmail);
 
         rowProfile = findViewById(R.id.rowProfile);
-        rowCommunity = findViewById(R.id.rowCommunity);
-        rowSchedule = findViewById(R.id.rowSchedule);
+        rowOrderProduct = findViewById(R.id.rowOrderProduct);
         rowLogout = findViewById(R.id.rowLogout);
 
+//        Button icon
+        // Cập nhật tiêu đề cho từng item
+        ((TextView) rowProfile.findViewById(R.id.tvTitle)).setText("Profile");
+        ((TextView) rowOrderProduct.findViewById(R.id.tvTitle)).setText("History Order");
+        ((TextView) rowLogout.findViewById(R.id.tvTitle)).setText("Logout");
+
+        ((ImageView) rowProfile.findViewById(R.id.imgIcon)).setImageResource(R.drawable.ic_profile);
+        ((ImageView) rowOrderProduct.findViewById(R.id.imgIcon)).setImageResource(R.drawable.ic_profile);
+        ((ImageView) rowLogout.findViewById(R.id.imgIcon)).setImageResource(R.drawable.ic_logout);
+
+
         // Gán dữ liệu tạm (bạn có thể lấy từ SharedPreferences hoặc Intent)
-        tvName.setText("Khoi Dev");
-        tvEmail.setText("giakhoi.dev@gmail.com");
+        SharedPreferences prefs = getSharedPreferences("USER_SESSION", MODE_PRIVATE);
+        String name = prefs.getString("USER_NAME", "Unknown User");
+        String email = prefs.getString("USER_EMAIL", "unknown@example.com");
+
+        tvName.setText(name);
+        tvEmail.setText(email);
+
 
         // Xử lý sự kiện click
         rowProfile.setOnClickListener(view -> {
@@ -44,21 +60,23 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
         });
 
-        rowCommunity.setOnClickListener(view -> {
-            // Mở cộng đồng
-            startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
+        rowOrderProduct.setOnClickListener(view -> {
+            startActivity(new Intent(ProfileActivity.this, OrderHistoryActivity.class));
         });
 
-        rowSchedule.setOnClickListener(view -> {
-            // Mở lịch trình
-            startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
-        });
 
         rowLogout.setOnClickListener(view -> {
-            // Xử lý đăng xuất
-            // Ví dụ: clear session, chuyển về màn Login
-            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
-            finish(); // kết thúc màn hiện tại
+            // Không khai báo lại prefs — dùng biến đã có
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear(); // Xóa toàn bộ thông tin
+            editor.apply();
+
+            // Quay về màn Login
+            Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         });
+
+
     }
 }

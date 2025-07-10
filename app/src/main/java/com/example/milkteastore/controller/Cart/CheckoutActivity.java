@@ -15,6 +15,7 @@ import com.example.milkteastore.R;
 import com.example.milkteastore.controller.MainActivity;
 import com.example.milkteastore.dao.OrderDAO;
 import com.example.milkteastore.model.CartItem;
+import com.example.milkteastore.model.Topping;
 import com.example.milkteastore.utils.CartManager;
 
 import java.util.ArrayList;
@@ -60,6 +61,17 @@ public class CheckoutActivity extends AppCompatActivity {
             tvItem.setTextColor(Color.BLACK);
             tvItem.setTextSize(16);
             productContainer.addView(tvItem);
+
+            // Hiển thị topping (nếu có)
+            if (item.getToppings() != null && !item.getToppings().isEmpty()) {
+                for (Topping topping : item.getToppings()) {
+                    TextView toppingView = new TextView(this);
+                    toppingView.setText(" + " + topping.getName() + " (₱" + topping.getPrice() + ")");
+                    toppingView.setTextColor(Color.DKGRAY);
+                    toppingView.setTextSize(14);
+                    productContainer.addView(toppingView);
+                }
+            }
         }
 
         // Đặt hàng khi nhấn

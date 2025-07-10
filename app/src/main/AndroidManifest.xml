@@ -32,10 +32,13 @@
 
 <!--        PROFILE***********************************************-->
         <activity android:name=".controller.Profile.ProfileActivity" />
+        <activity android:name=".controller.Profile.OrderHistoryActivity" />
 
-<!--   Cart product-->
+
+        <!--   Cart product-->
         <activity android:name=".controller.Cart.CartActivity" />
         <activity android:name=".controller.Cart.CheckoutActivity" />
+        <activity android:name=".controller.Cart.ChooseToppingActivity" />
 
         <!--   Chat -->
         <activity android:name=".controller.Chat.ChatActivity" />

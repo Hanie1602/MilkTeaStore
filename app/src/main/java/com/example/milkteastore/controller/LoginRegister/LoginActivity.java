@@ -73,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                     .edit()
                     .putInt("USER_ID", loggedInUser.id)
                     .putString("USER_NAME", loggedInUser.firstName + " " + loggedInUser.lastName)
+                    .putString("USER_EMAIL", loggedInUser.getEmail())
                     .putString("USER_PHONE", loggedInUser.getPhoneNumber())
                     .putString("USER_ADDRESS", loggedInUser.getAddress())
                     .apply();

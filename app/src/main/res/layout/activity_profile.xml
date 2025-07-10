@@ -48,7 +48,7 @@
         <!-- Body Card -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="374dp"
             android:layout_marginTop="-24dp"
             android:background="@drawable/bg_top_rounded_card"
             android:clipToPadding="false"
@@ -70,17 +70,13 @@
                 android:id="@+id/rowProfile"
                 layout="@layout/item_profile_row" />
 
-            <!-- Item 2: Cộng đồng -->
+            <!-- Item 2: order product -->
             <include
-                android:id="@+id/rowCommunity"
+                android:id="@+id/rowOrderProduct"
                 layout="@layout/item_profile_row" />
 
-            <!-- Item 3: Lịch trình -->
-            <include
-                android:id="@+id/rowSchedule"
-                layout="@layout/item_profile_row" />
 
-            <!-- Item 4: Đăng xuất -->
+            <!-- Item 3: Đăng xuất -->
             <include
                 android:id="@+id/rowLogout"
                 layout="@layout/item_profile_row" />

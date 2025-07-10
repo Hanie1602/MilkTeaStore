@@ -1,6 +1,7 @@
 package com.example.milkteastore.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class CartItem implements Serializable {
     private int userId;
@@ -10,6 +11,7 @@ public class CartItem implements Serializable {
     private int image;
     private String size;
     private int quantity;
+    private List<Topping> toppings;
 
     public CartItem(int userId, int productId, String name, String price, int image, String size, int quantity) {
         this.userId = userId;
@@ -75,5 +77,13 @@ public class CartItem implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public List<Topping> getToppings() {
+        return toppings;
+    }
+
+    public void setToppings(List<Topping> toppings) {
+        this.toppings = toppings;
     }
 }

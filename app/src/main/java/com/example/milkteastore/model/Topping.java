@@ -1,11 +1,19 @@
 package com.example.milkteastore.model;
 
-public class Topping {
+import java.io.Serializable;
+
+public class Topping implements Serializable {
     private int id;
     private String name;
     private String image;
     private double price;
     private String deletedTime;
+
+    public Topping(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
 
     public Topping(int id, String name, double price, String image, String deletedTime) {
         this.id = id;
