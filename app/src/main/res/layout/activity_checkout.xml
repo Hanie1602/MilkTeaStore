@@ -86,32 +86,50 @@
                 <!-- Add views programmatically -->
             </LinearLayout>
 
-
-
             <!-- Payment Option -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_card"
-                android:orientation="horizontal"
-                android:padding="12dp">
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_payment"
-                    android:tint="#4E2E1E" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/rgPaymentOption"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="Cash on Delivery"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rbCashOnDelivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/bg_card"
+                        android:padding="12dp"
+                        android:text="Cash on Delivery"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbCardPayment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:padding="12dp"
+                        android:text="Card Payment"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+                </RadioGroup>
+
+                <!-- QR Code Image -->
+                <ImageView
+                    android:id="@+id/ivQrCode"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/qr"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <!-- Payment Details -->
@@ -235,7 +253,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-
         </LinearLayout>
     </ScrollView>
 
@@ -260,7 +277,6 @@
             android:text="Total Payment\n₱0"
             android:textColor="#000000"
             android:textSize="16sp" />
-
 
         <Button
             android:id="@+id/btnPlaceOrder"
