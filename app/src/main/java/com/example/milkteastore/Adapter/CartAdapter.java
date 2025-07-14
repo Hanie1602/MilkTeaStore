@@ -119,7 +119,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public static class CartViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
         TextView tvName, tvDesc, tvPrice, tvQuantity;
-        Button btnIncrease, btnDecrease, btnRemove, btnAddTopping;
+        Button btnIncrease, btnDecrease;
+        ImageButton btnRemove, btnAddTopping;
         TextView tvToppings;
 
         public CartViewHolder(@NonNull View itemView) {

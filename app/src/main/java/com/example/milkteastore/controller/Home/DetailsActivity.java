@@ -1,15 +1,12 @@
 package com.example.milkteastore.controller.Home;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.milkteastore.R;
-import com.example.milkteastore.controller.Cart.CartActivity;
+import com.example.milkteastore.controller.MainActivity;
 import com.example.milkteastore.databinding.ActivityDetailsBinding;
 import com.example.milkteastore.model.CartItem;
 import com.example.milkteastore.utils.CartManager;
@@ -67,6 +64,11 @@ public class DetailsActivity extends AppCompatActivity {
 
             CartManager.getInstance().addToCart(item);
             Toast.makeText(this, "Added to cart", Toast.LENGTH_SHORT).show();
+
+            MainActivity mainActivity = (MainActivity) getParent();
+            if (mainActivity != null) {
+                mainActivity.updateCartBadge();
+            }
         });
 
 

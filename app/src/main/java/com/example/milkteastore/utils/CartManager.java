@@ -64,4 +64,13 @@ public class CartManager {
         }
         return total;
     }
+
+    public int getTotalItemCount() {
+        int count = 0;
+        for (CartItem item : cartItems) {
+            count += item.getQuantity();
+        }
+        return count;
+    }
+
 }
