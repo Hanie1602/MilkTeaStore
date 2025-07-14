@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.milkteastore.R;
 import com.example.milkteastore.controller.Cart.CartActivity;
+import com.example.milkteastore.controller.Cart.CheckoutActivity;
 import com.example.milkteastore.databinding.ActivityDetailsBinding;
 import com.example.milkteastore.model.CartItem;
 import com.example.milkteastore.utils.CartManager;
