@@ -12,7 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.milkteastore.R;
-import com.example.milkteastore.controller.Home.HomeActivity;
+import com.example.milkteastore.controller.Home.HomeFragment;
+import com.example.milkteastore.controller.MainActivity;
 import com.example.milkteastore.dao.UserDAO;
 import com.example.milkteastore.model.User;
 
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 //        Home  screen
         TextView tvHomeScreen = findViewById(R.id.tvHomeScreen);
         tvHomeScreen.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         });
 
@@ -78,8 +79,8 @@ public class LoginActivity extends AppCompatActivity {
                     .putString("USER_ADDRESS", loggedInUser.getAddress())
                     .apply();
 
-            // 👉 Chuyển đến HomeActivity
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            // 👉 Chuyển đến HomeFragment
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra("userId", loggedInUser.id);
             startActivity(intent);
             finish(); // kết thúc LoginActivity

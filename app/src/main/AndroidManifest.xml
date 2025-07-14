@@ -27,16 +27,16 @@
         <activity android:name=".controller.LoginRegister.RegisterActivity" />
 
 <!--        HOME SCREEN *******************************************-->
-        <activity android:name=".controller.Home.HomeActivity" />
+<!--        <activity android:name=".controller.Home.HomeFragment" />-->
         <activity android:name=".controller.Home.DetailsActivity" />
 
 <!--        PROFILE***********************************************-->
-        <activity android:name=".controller.Profile.ProfileActivity" />
+<!--        <activity android:name=".controller.Profile.ProfileFragment" />-->
         <activity android:name=".controller.Profile.OrderHistoryActivity" />
 
 
         <!--   Cart product-->
-        <activity android:name=".controller.Cart.CartActivity" />
+<!--        <activity android:name=".controller.Cart.CartFragment" />-->
         <activity android:name=".controller.Cart.CheckoutActivity" />
         <activity android:name=".controller.Cart.ChooseToppingActivity" />
 

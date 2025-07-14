@@ -1,19 +1,16 @@
 package com.example.milkteastore.controller;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.milkteastore.R;
-
-import com.example.milkteastore.controller.Cart.CartActivity;
-import com.example.milkteastore.controller.Profile.ProfileActivity;
+import com.example.milkteastore.controller.Cart.CartFragment;
+import com.example.milkteastore.controller.Home.HomeFragment;
+import com.example.milkteastore.controller.Profile.ProfileFragment;
+import com.example.milkteastore.utils.CartManager;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,41 +20,57 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
-        View rootView = findViewById(R.id.rootLayout);
-        ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
 
+        if (savedInstanceState == null) {
+            loadFragment(new HomeFragment());
+        }
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
+
             int itemId = item.getItemId();
-
             if (itemId == R.id.menu_home) {
-                // Đã ở MainActivity (Home), không cần mở lại
-                return true;
+                selectedFragment = new HomeFragment();
+            } else if (itemId == R.id.menu_cart) {
+                selectedFragment = new CartFragment();
+            } else if (itemId == R.id.menu_profile) {
+                selectedFragment = new ProfileFragment();
             }
 
-            if (itemId == R.id.menu_cart) {
-                Intent intent = new Intent(MainActivity.this, CartActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
-                return true;
-            }
-
-            if (itemId == R.id.menu_profile) {
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
+            if (selectedFragment != null) {
+                loadFragment(selectedFragment);
                 return true;
             }
 
             return false;
         });
+
+        updateCartBadge();
+    }
+
+    public void updateCartBadge() {
+        int cartCount = CartManager.getInstance().getTotalItemCount(); // ➜ Tổng số sản phẩm
+
+        BadgeDrawable badge = bottomNavigationView.getOrCreateBadge(R.id.menu_cart);
+        if (cartCount > 0) {
+            badge.setVisible(true);
+            badge.setNumber(cartCount);
+        } else {
+            badge.setVisible(false);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateCartBadge();
+    }
+
+
+    private void loadFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
     }
 }

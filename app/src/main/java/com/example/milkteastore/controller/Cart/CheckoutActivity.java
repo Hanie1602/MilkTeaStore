@@ -44,7 +44,7 @@ public class CheckoutActivity extends AppCompatActivity {
         tvAddress.setText(address);
         tvPhone.setText(phone);
 
-        // Nhận giỏ hàng và tổng tiền từ CartActivity
+        // Nhận giỏ hàng và tổng tiền từ CartFragment
         ArrayList<CartItem> cartItems = (ArrayList<CartItem>) getIntent().getSerializableExtra("CART_LIST");
         double totalAmount = getIntent().getDoubleExtra("TOTAL_AMOUNT", 0.0);
 
