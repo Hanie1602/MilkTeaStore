@@ -54,7 +54,18 @@ public class CartFragment extends Fragment {
                 .filter(item -> item.getUserId() == currentUserId)
                 .collect(Collectors.toList());
 
-        adapter = new CartAdapter(getContext(), cartItems, this::updateSubtotal);
+        adapter = new CartAdapter(
+                getContext(),
+                cartItems,
+                this::updateSubtotal,
+                () -> {
+                    // Gọi phương thức cập nhật badge từ MainActivity
+                    if (getActivity() instanceof com.example.milkteastore.controller.MainActivity) {
+                        ((com.example.milkteastore.controller.MainActivity) getActivity()).updateCartBadge();
+                    }
+                }
+        );
+
         binding.rvCart.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvCart.setAdapter(adapter);
 

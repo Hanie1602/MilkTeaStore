@@ -17,7 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.milkteastore.R;
-import com.example.milkteastore.controller.Home.HomeActivity;
+import com.example.milkteastore.controller.Home.HomeFragment;
 import com.example.milkteastore.controller.MainActivity;
 import com.example.milkteastore.dao.OrderDAO;
 import com.example.milkteastore.model.CartItem;
@@ -115,7 +115,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 Toast.makeText(this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
                 CartManager.getInstance().clearCartForUser(currentUserId);
 
-                Intent intent = new Intent(this, HomeActivity.class);
+                Intent intent = new Intent(this, HomeFragment.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();

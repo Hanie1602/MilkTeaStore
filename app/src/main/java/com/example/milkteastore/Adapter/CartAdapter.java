@@ -24,10 +24,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private final Context context;
     private final Runnable updateSubtotalCallback;
 
-    public CartAdapter(Context context, List<CartItem> cartItems, Runnable updateSubtotalCallback) {
+    private final Runnable updateCartBadgeCallback;
+
+    public CartAdapter(Context context, List<CartItem> cartItems, Runnable updateSubtotalCallback, Runnable updateCartBadgeCallback) {
         this.context = context;
         this.cartItems = cartItems;
         this.updateSubtotalCallback = updateSubtotalCallback;
+        this.updateCartBadgeCallback = updateCartBadgeCallback;
     }
 
     @NonNull
@@ -90,8 +93,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 cartItems.remove(position);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, cartItems.size());
+                updateCartBadgeCallback.run();
             }
             updateSubtotalCallback.run();
+
         });
 
         holder.btnRemove.setOnClickListener(v -> {
@@ -100,6 +105,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, cartItems.size());
             updateSubtotalCallback.run();
+            updateCartBadgeCallback.run();
         });
 
         // Xử lý nút Add Topping
